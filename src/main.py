@@ -10,7 +10,7 @@ from tensorflow import keras
 import keras_cv
 
 # Decorador para caché
-@st.cache(allow_output_mutation=True)
+@st.cache_data(allow_output_mutation=True)
 def cargar_modelo():
     # Crear y cargar el modelo
     return keras_cv.models.StableDiffusion(img_width=512, img_height=512)
@@ -22,6 +22,7 @@ def main():
         st.write('Escribe lo que deseas generar a través del modelo generador de imágenes')
         text_image_generator = st.text_input('Prompt to Create Images', 'Horse on the rainbow')
 
+        # Cargar el modelo desde la caché
         model = cargar_modelo()
 
         with st.spinner("Generando imágenes..."):
