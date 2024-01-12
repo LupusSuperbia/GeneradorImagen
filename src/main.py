@@ -10,7 +10,7 @@ from tensorflow import keras
 import keras_cv
 
 # Decorador para caché
-@st.cache_data(allow_output_mutation=True)
+@st.cache_data
 def cargar_modelo():
     # Crear y cargar el modelo
     return keras_cv.models.StableDiffusion(img_width=512, img_height=512)
